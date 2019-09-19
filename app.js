@@ -14,6 +14,11 @@ const port = '3000'
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
+/*******************
+      static
+*******************/
+app.use(express.static('public'))
+
 
 /*******************
       routes

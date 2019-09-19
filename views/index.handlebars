@@ -1,1 +1,67 @@
-<h1>index</h1>
+<div class="row">
+  <div class="col-md-10 m-auto">
+    <div class="card card-body">
+      {{!-- select --}}
+      <div class="row ml-2">
+        <div class="col-7 col-sm-8">
+          <div class="form-group">
+            <select name="index-type-list" id="list" class="form-control" style="font-size: 1em;">
+              <option value="#" selected disabled>請選擇</option>
+              <option value="">家居物業</option>
+              <option value="">交通出行</option>
+              <option value="">休閒娛樂</option>
+              <option value="">餐飲食品</option>
+              <option value="">其他</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      {{!-- total expense --}}
+      <div class="row">
+        <div class="col-7 col-sm-8">
+          <div class="div-expense d-flex flex-row justify-content-center">
+            <p>總金額：</p><span class="total-expense">25260</span>
+          </div>
+        </div>
+      </div>
+
+      {{!-- list --}}
+      <div class="list-group">
+        <ul>
+          <li class="index-icons">
+            <div class="row  align-items-center">
+              <div class="col-7 col-sm-8 bg-light">
+                <div class="d-flex flex-row align-items-center">
+                  <i class="fas fa-home pr-2"></i>
+                  <div class="d-flex flex-column">
+                    <big>家居物業</big>
+                    <small>2019/09/20</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-5 col-sm-4">
+                <div class="d-flex flex-row justify-content-end ">
+                  <div class="btn btn-warning mr-1">修改</div>
+                  <div class="btn btn-danger">刪除</div>
+                </div>
+
+              </div>
+            </div>
+          </li>
+
+          {{!-- <i class="fas fa-shuttle-van pr-2">交通出行</i> --}}
+          {{!-- <i class="fas fa-grin-beam pr-2">休閒娛樂</i> --}}
+          {{!-- <i class="fas fa-utensils pr-2">餐飲食品</i> --}}
+          {{!-- <i class="fas fa-pen pr-2">其他</i> --}}
+        </ul>
+
+
+
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
