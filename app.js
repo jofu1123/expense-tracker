@@ -19,6 +19,7 @@ app.set('view engine', 'handlebars')
       routes
 *******************/
 app.use('/', require('./routes/home'))
+app.use('/expense', require('./routes/record'))
 
 
 /*******************
