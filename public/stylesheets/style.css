@@ -24,3 +24,17 @@
 big {
   font-weight: bold;
 }
+
+/*******************
+      new page
+ *******************/
+ 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.columns-left label {
+  margin-top: 15px;
+}
