@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const Record = require('../models/record')
 
 // 列出所有record
 router.get('/', (req, res) => {
@@ -13,8 +14,16 @@ router.get('/new', (req, res) => {
 
 // 新增紀錄record
 router.post('/', (req, res) => {
-  console.log(req.body)
-  res.redirect('/')
+  const record = new Record({
+    name: req.body.name,
+    date: req.body.date,
+    category: req.body.category,
+    amount: req.body.amount
+  })
+  record.save(err => {
+    if (err) return console.error(err)
+    return res.redirect('/')
+  })
 })
 
 // 編輯record頁面

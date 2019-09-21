@@ -21,7 +21,7 @@
       <div class="row">
         <div class="col-7 col-sm-8">
           <div class="div-expense d-flex flex-row justify-content-center">
-            <p>總金額：</p><span class="total-expense">25260</span>
+            <p>總金額：</p><span class="total-expense">{{{count}}}</span>
           </div>
         </div>
       </div>
@@ -35,10 +35,11 @@
               <div class="col-7 col-sm-8 item-prepend">
                 <div class="d-flex flex-row align-items-center">
                   <i class="fas fa-{{{this.category}}} col-2 px-0"></i>
-                  <div class="d-flex flex-column col-10">
+                  <div class="d-flex flex-column col-6">
                     <big>{{{this.name}}}</big>
                     <small>{{{this.date}}}</small>
                   </div>
+                  <span class="col-4 text-right"> {{{this.amount}}}</span>
                 </div>
               </div>
               <div class="col-5 col-sm-4">
