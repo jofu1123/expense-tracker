@@ -45,7 +45,7 @@
               <div class="col-5 col-sm-4">
                 <div class="d-flex flex-row justify-content-end ">
                   <a href="/expense/{{{this._id}}}/edit" class="btn btn-warning mr-1">Edit</a>
-                  <form action="/expense/id/delete?_method=DELETE" method="POST" style="display: inline;">
+                  <form action="/expense/{{{this._id}}}/delete?_method=DELETE" method="POST" style="display: inline;">
                     <button type="submit" class="btn btn-danger">Delete</button>
                   </form>
                 </div>

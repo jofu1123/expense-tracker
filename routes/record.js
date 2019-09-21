@@ -55,7 +55,12 @@ router.put('/:id/edit', (req, res) => {
 
 // 刪除record
 router.delete('/:id/delete', (req, res) => {
-  res.redirect('/')
+  Record.findOne({ _id: req.params.id }, (err, record) => {
+    record.remove(err => {
+      if (err) return console.error(err)
+      return res.redirect('/')
+    })
+  })
 })
 
 module.exports = router 
