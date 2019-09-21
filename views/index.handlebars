@@ -29,14 +29,15 @@
       {{!-- list --}}
       <div class="list-group">
         <ul>
+          {{#each records}}
           <li class="index-icons">
             <div class="row  align-items-center">
               <div class="col-7 col-sm-8 bg-light">
                 <div class="d-flex flex-row align-items-center">
                   <i class="fas fa-home pr-2"></i>
                   <div class="d-flex flex-column">
-                    <big>家居物業</big>
-                    <small>2019/09/20</small>
+                    <big>{{{this.category}}}</big>
+                    <small>{{{this.date}}}</small>
                   </div>
                 </div>
               </div>
@@ -50,15 +51,14 @@
               </div>
             </div>
           </li>
+          {{/each}}
+
 
           {{!-- <i class="fas fa-shuttle-van pr-2">交通出行</i> --}}
           {{!-- <i class="fas fa-grin-beam pr-2">休閒娛樂</i> --}}
           {{!-- <i class="fas fa-utensils pr-2">餐飲食品</i> --}}
           {{!-- <i class="fas fa-pen pr-2">其他</i> --}}
         </ul>
-
-
-
       </div>
 
       <div class="row">

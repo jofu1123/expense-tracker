@@ -4,7 +4,7 @@ const app = express()
 const exphbs = require('express-handlebars')
 const bodyPaser = require('body-parser')
 const methodOverride = require('method-override')
-
+const mongoose = require('mongoose')
 
 //port
 const port = '3000'
@@ -15,6 +15,24 @@ const port = '3000'
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.use(methodOverride('_method'))
+
+/*******************
+    mongo connect
+*******************/
+mongoose.connect('mongodb://localhost/expense', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+
+const db = mongoose.connection
+db.on('error', () => {
+      console.log('mongodb error!')
+})
+
+db.once('open', () => {
+      console.log('mongodb connected !')
+})
+
+
+
+
 
 /*******************
       static

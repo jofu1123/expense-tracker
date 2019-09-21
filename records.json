@@ -1,0 +1,16 @@
+{
+  "results": [
+    {
+      "name": "name1",
+      "category": "category1",
+      "date": "2019-09-21",
+      "amount": "2000"
+    },
+    {
+      "name": "name2",
+      "category": "category2",
+      "date": "2019-09-21",
+      "amount": "2001"
+    }
+  ]
+}
