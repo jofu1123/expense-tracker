@@ -27,7 +27,7 @@ router.put('/:id/edit', (req, res) => {
 })
 
 // 刪除record
-router.post('/:id/delete', (req, res) => {
+router.delete('/:id/delete', (req, res) => {
   res.redirect('/')
 })
 
