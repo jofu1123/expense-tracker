@@ -25,6 +25,11 @@ big {
   font-weight: bold;
 }
 
+.index-ul li:nth-child(odd) .item-prepend{
+  background-color: #d3d3d3;
+  
+}
+
 /*******************
       new page
  *******************/

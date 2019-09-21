@@ -2,13 +2,13 @@
   "results": [
     {
       "name": "name1",
-      "category": "category1",
+      "category": "home",
       "date": "2019-09-21",
       "amount": "2000"
     },
     {
       "name": "name2",
-      "category": "category2",
+      "category": "pen",
       "date": "2019-09-21",
       "amount": "2001"
     }

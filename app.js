@@ -15,6 +15,7 @@ const port = '3000'
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.use(methodOverride('_method'))
+app.use(bodyPaser.urlencoded({ extended: true }))
 
 /*******************
     mongo connect

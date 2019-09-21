@@ -13,6 +13,7 @@ router.get('/new', (req, res) => {
 
 // 新增紀錄record
 router.post('/', (req, res) => {
+  console.log(req.body)
   res.redirect('/')
 })
 
