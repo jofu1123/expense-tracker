@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Record = require('../models/record')
+const categoryToCh = require('../libs/categoryToCH')
 
 // 列出所有record
 router.get('/', (req, res) => {
@@ -14,11 +15,13 @@ router.get('/new', (req, res) => {
 
 // 新增紀錄record
 router.post('/', (req, res) => {
+  const categoryCh = categoryToCh(req.body.category)
   const record = new Record({
     name: req.body.name,
     date: req.body.date,
     category: req.body.category,
-    amount: req.body.amount
+    amount: req.body.amount,
+    categoryCh: categoryCh
   })
   record.save(err => {
     if (err) return console.error(err)
@@ -28,12 +31,26 @@ router.post('/', (req, res) => {
 
 // 編輯record頁面
 router.get('/:id/edit', (req, res) => {
-  res.render('edit')
+  Record.findOne({ _id: req.params.id }, (err, record) => {
+    if (err) return console.log(err)
+    return res.render('edit', { record })
+  })
 })
 
 // 編輯record紀錄
 router.put('/:id/edit', (req, res) => {
-  res.render('edit')
+  Record.findOne({ _id: req.params.id }, (err, record) => {
+    if (err) return console.error(err)
+    record.name = req.body.name
+    record.category = req.body.category
+    record.date = req.body.date
+    record.amount = req.body.amount
+    record.categoryCh = categoryToCh(req.body.category)
+    record.save((err) => {
+      if (err) return console.error(err)
+      return res.redirect('/')
+    })
+  })
 })
 
 // 刪除record
