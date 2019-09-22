@@ -14,8 +14,6 @@ router.post('/login', (req, res, next) => {
     successRedirect: '/',
     failureRedirect: '/users/login'
   })(req, res, next)
-
-  res.render('login')
 })
 
 // register

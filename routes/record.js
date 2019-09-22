@@ -2,19 +2,20 @@ const express = require('express')
 const router = express.Router()
 const Record = require('../models/record')
 const categoryToCh = require('../libs/categoryToCH')
+const { authenticated } = require('../config/auth')
 
 // 列出所有record
-router.get('/', (req, res) => {
+router.get('/', authenticated, (req, res) => {
   res.redirect('/')
 })
 
 // 新增record頁面
-router.get('/new', (req, res) => {
+router.get('/new', authenticated, (req, res) => {
   res.render('new')
 })
 
 // 新增紀錄record
-router.post('/', (req, res) => {
+router.post('/', authenticated, (req, res) => {
   const categoryCh = categoryToCh(req.body.category)
   const record = new Record({
     name: req.body.name,
@@ -30,7 +31,7 @@ router.post('/', (req, res) => {
 })
 
 // 編輯record頁面
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', authenticated, (req, res) => {
   Record.findOne({ _id: req.params.id }, (err, record) => {
     if (err) return console.log(err)
     return res.render('edit', { record })
@@ -38,7 +39,7 @@ router.get('/:id/edit', (req, res) => {
 })
 
 // 編輯record紀錄
-router.put('/:id/edit', (req, res) => {
+router.put('/:id/edit', authenticated, (req, res) => {
   Record.findOne({ _id: req.params.id }, (err, record) => {
     if (err) return console.error(err)
     record.name = req.body.name
@@ -54,7 +55,7 @@ router.put('/:id/edit', (req, res) => {
 })
 
 // 刪除record
-router.delete('/:id/delete', (req, res) => {
+router.delete('/:id/delete', authenticated, (req, res) => {
   Record.findOne({ _id: req.params.id }, (err, record) => {
     record.remove(err => {
       if (err) return console.error(err)

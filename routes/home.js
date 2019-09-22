@@ -3,9 +3,10 @@ const router = express.Router()
 const Record = require('../models/record')
 const total = require('../libs/total')
 const categoryToCh = require('../libs/categoryToCh')
+const { authenticated } = require('../config/auth')
 
 // 首頁
-router.get('/', (req, res) => {
+router.get('/', authenticated, (req, res) => {
   Record.find().exec((err, records) => {
     let count = total(records)
     const keyword = categoryToCh(req.query.keyword)
