@@ -5,6 +5,7 @@ const exphbs = require('express-handlebars')
 const bodyPaser = require('body-parser')
 const methodOverride = require('method-override')
 const mongoose = require('mongoose')
+const session = require('express-session')
 
 //port
 const port = '3000'
@@ -16,6 +17,12 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.use(methodOverride('_method'))
 app.use(bodyPaser.urlencoded({ extended: true }))
+
+app.use(session({
+      secret: '2bornot2b',
+      resave: false,
+      saveUninitialized: true,
+}))
 
 /*******************
     mongo connect
