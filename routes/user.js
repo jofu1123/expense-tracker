@@ -7,18 +7,18 @@ router.get('/login', (req, res) => {
 })
 
 // login check
-router.post('login', (req, res) => {
-  res.render('login check')
+router.post('/login', (req, res) => {
+  res.render('login')
 })
 
 // register
-router.get('register', (req, res) => {
+router.get('/register', (req, res) => {
   res.render('register')
 })
 
 // register check
-router.post('register', (req, res) => {
-  res.send('register')
+router.post('/register', (req, res) => {
+  res.render('register')
 })
 
 // logout
