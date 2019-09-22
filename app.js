@@ -4,13 +4,13 @@ const app = express()
 if (process.env.NODE_ENV !== 'production') {
       require('dotenv').config()
 }
-
 const exphbs = require('express-handlebars')
 const bodyPaser = require('body-parser')
 const methodOverride = require('method-override')
 const mongoose = require('mongoose')
 const session = require('express-session')
 const passport = require('passport')
+const flash = require('connect-flash')
 
 //port
 const port = '3000'
@@ -29,6 +29,7 @@ app.use(session({
       saveUninitialized: true,
 }))
 
+app.use(flash())
 /*******************
     mongo connect
 *******************/
@@ -58,6 +59,8 @@ require('./config/passport')(passport)
 app.use((req, res, next) => {
       res.locals.user = req.user
       res.locals.isAuthenticated = req.isAuthenticated()
+      res.locals.success_msg = req.flash('success_msg')
+      res.locals.warning_msg = req.flash('warning_msg')
       next()
 })
 /*******************
