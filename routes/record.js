@@ -16,13 +16,11 @@ router.get('/new', authenticated, (req, res) => {
 
 // 新增紀錄record
 router.post('/', authenticated, (req, res) => {
-  const categoryCh = categoryToCh(req.body.category)
   const record = new Record({
     name: req.body.name,
     date: req.body.date,
     category: req.body.category,
     amount: req.body.amount,
-    categoryCh: categoryCh,
     userId: req.user._id
   })
   record.save(err => {
@@ -35,7 +33,8 @@ router.post('/', authenticated, (req, res) => {
 router.get('/:id/edit', authenticated, (req, res) => {
   Record.findOne({ _id: req.params.id, userId: req.user._id }, (err, record) => {
     if (err) return console.log(err)
-    return res.render('edit', { record })
+    const categoryCh = categoryToCh(record.category)
+    return res.render('edit', { record, categoryCh })
   })
 })
 
@@ -47,7 +46,6 @@ router.put('/:id/edit', authenticated, (req, res) => {
     record.category = req.body.category
     record.date = req.body.date
     record.amount = req.body.amount
-    record.categoryCh = categoryToCh(req.body.category)
     record.save((err) => {
       if (err) return console.error(err)
       return res.redirect('/')

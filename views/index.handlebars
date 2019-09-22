@@ -7,18 +7,12 @@
           <div class="form-group">
             <select name="index-type-list" id="list" class="form-control" style="font-size: 1em;"
               onChange="window.location.href=this.value">
-              <option value="#" selected disabled>
-                {{#if keyword}}
-                {{{keyword}}}
-                {{else}}
-                請選擇
-                {{/if}}
+              <option value="#" selected disabled>請選擇</option>
+              {{#each categoryCh }}
+              <option value="/filter?keyword={{{this.en}}}" {{#if this.isSelected}}selected disabled {{/if}}>
+                {{{this.ch}}}
               </option>
-              <option value="/filter?keyword=home">家居物業</option>
-              <option value="/filter?keyword=shuttle-van">交通出行</option>
-              <option value="/filter?keyword=grin-beam">休閒娛樂</option>
-              <option value="/filter?keyword=utensils">餐飲食品</option>
-              <option value="/filter?keyword=pen">其他</option>
+              {{/each}}
             </select>
           </div>
         </div>
@@ -66,6 +60,7 @@
       <div class="row">
         <div class="col-7 col-sm-8 ml-4">
           <a href="/expense/new" class="btn btn-outline-warning px-5">Create</a>
+          <a href="/expense" class="btn btn-outline-secondary">Home</a>
         </div>
       </div>
 

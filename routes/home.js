@@ -9,9 +9,10 @@ const { authenticated } = require('../config/auth')
 router.get('/', authenticated, (req, res) => {
   Record.find({ userId: req.user._id }).exec((err, records) => {
     let count = total(records)
-    const keyword = categoryToCh(req.query.keyword)
+    let categoryCh = categoryToCh()
+
     if (err) return console.error(err)
-    return res.render('index', { records, count, keyword })
+    return res.render('index', { records, count, categoryCh })
   })
 })
 

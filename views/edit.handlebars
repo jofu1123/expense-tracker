@@ -26,12 +26,9 @@
             <label for="category" class="col-5 col-sm-4 col-form-label">類別*:</label>
             <div class="col-7 col-sm-8">
               <select name="category" id="category" class="form-control">
-                <option value="{{{record.category}}}" selected disabled>{{{record.categoryCh}}}</option>
-                <option value="home">家居物業</option>
-                <option value="shuttle-van">交通出行</option>
-                <option value="grin-beam">休閒娛樂</option>
-                <option value="utensils">餐飲食品</option>
-                <option value="pen">其他</option>
+                {{#each categoryCh}}
+                <option value="{{{this.en}}}" {{#if this.isSelected}}selected disabled{{/if}}>{{{this.ch}}} </option>
+                {{/each}}
               </select>
             </div>
           </div>
@@ -43,7 +40,8 @@
             </div>
           </div>
 
-          <button type="submit" class="btn btn-primary btn-block my-5">送出</button>
+          <button type="submit" class="btn btn-primary btn-block my-3">送出</button>
+          <a href="/expense" class="btn btn-secondary btn-block">取消</a>
         </form>
       </div>
     </div>

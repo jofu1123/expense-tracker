@@ -1,22 +1,34 @@
 function categoryToCh(category) {
-  switch (category) {
-    case "home":
-      return "家居物業";
-      break;
-    case "shuttle-van":
-      return "交通出行";
-      break;
-    case "grin-beam":
-      return "休閒娛樂";
-      break;
-    case "utensils":
-      return "餐飲食品";
-      break;
-    case "pen":
-      return "其他";
-      break;
-    default:
-      return "請選擇";
-  }
+  const categoryArr = [
+    {
+      "en": "home",
+      "ch": "家居物業"
+    },
+    {
+      "en": "shuttle-van",
+      "ch": "交通出行"
+    },
+    {
+      "en": "grin-beam",
+      "ch": "休閒娛樂"
+    },
+    {
+      "en": "utensils",
+      "ch": "餐飲食品"
+    },
+    {
+      "en": "pen",
+      "ch": "其他",
+    }
+  ]
+
+  let newCategory = categoryArr.map((item) => {
+    if (item.en === category) {
+      item.isSelected = true
+    }
+    return item
+  })
+  return newCategory
+
 }
 module.exports = categoryToCh
