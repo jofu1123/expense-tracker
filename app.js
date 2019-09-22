@@ -13,7 +13,7 @@ const passport = require('passport')
 const flash = require('connect-flash')
 
 //port
-const port = '3000'
+const port = process.env.PORT || '3000'
 
 /*******************
        use
@@ -79,6 +79,6 @@ app.use('/auth', require('./routes/auths'))
 /*******************
     start server
 *******************/
-app.listen(process.env.PORT || port, () => {
+app.listen(port, () => {
       console.log('start localhost:3000')
 })
