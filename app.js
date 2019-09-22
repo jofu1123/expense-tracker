@@ -1,6 +1,10 @@
 // 載入
 const express = require('express')
 const app = express()
+if (process.env.NODE_ENV !== 'production') {
+      require('dotenv').config()
+}
+
 const exphbs = require('express-handlebars')
 const bodyPaser = require('body-parser')
 const methodOverride = require('method-override')
@@ -63,6 +67,7 @@ app.use('/', require('./routes/home'))
 app.use('/expense', require('./routes/record'))
 app.use('/filter', require('./routes/filter'))
 app.use('/users', require('./routes/user'))
+app.use('/auth', require('./routes/auths'))
 
 /*******************
     start server
