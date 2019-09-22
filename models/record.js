@@ -25,13 +25,14 @@ const recordSchema = new Schema({
   categoryCh: {
     type: String,
     require: true
+  },
+
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    index: true,
+    require: true
   }
-  // userId: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'User',
-  //   index: true,
-  //   require: true
-  // }
 })
 
 module.exports = mongoose.model('Record', recordSchema)

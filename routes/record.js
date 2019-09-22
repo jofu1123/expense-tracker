@@ -22,7 +22,8 @@ router.post('/', authenticated, (req, res) => {
     date: req.body.date,
     category: req.body.category,
     amount: req.body.amount,
-    categoryCh: categoryCh
+    categoryCh: categoryCh,
+    userId: req.user._id
   })
   record.save(err => {
     if (err) return console.error(err)
@@ -32,7 +33,7 @@ router.post('/', authenticated, (req, res) => {
 
 // 編輯record頁面
 router.get('/:id/edit', authenticated, (req, res) => {
-  Record.findOne({ _id: req.params.id }, (err, record) => {
+  Record.findOne({ _id: req.params.id, userId: req.user._id }, (err, record) => {
     if (err) return console.log(err)
     return res.render('edit', { record })
   })
@@ -40,7 +41,7 @@ router.get('/:id/edit', authenticated, (req, res) => {
 
 // 編輯record紀錄
 router.put('/:id/edit', authenticated, (req, res) => {
-  Record.findOne({ _id: req.params.id }, (err, record) => {
+  Record.findOne({ _id: req.params.id, userId: req.user._id }, (err, record) => {
     if (err) return console.error(err)
     record.name = req.body.name
     record.category = req.body.category
@@ -56,7 +57,7 @@ router.put('/:id/edit', authenticated, (req, res) => {
 
 // 刪除record
 router.delete('/:id/delete', authenticated, (req, res) => {
-  Record.findOne({ _id: req.params.id }, (err, record) => {
+  Record.findOne({ _id: req.params.id, userId: req.user._id }, (err, record) => {
     record.remove(err => {
       if (err) return console.error(err)
       return res.redirect('/')

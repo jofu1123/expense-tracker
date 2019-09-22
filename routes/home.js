@@ -7,7 +7,7 @@ const { authenticated } = require('../config/auth')
 
 // 首頁
 router.get('/', authenticated, (req, res) => {
-  Record.find().exec((err, records) => {
+  Record.find({ userId: req.user._id }).exec((err, records) => {
     let count = total(records)
     const keyword = categoryToCh(req.query.keyword)
     if (err) return console.error(err)
