@@ -16,7 +16,7 @@ function categoryToCh(category) {
       return "其他";
       break;
     default:
-      console.log('err')
+      return "請選擇";
   }
 }
 module.exports = categoryToCh

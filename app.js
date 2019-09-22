@@ -61,7 +61,7 @@ app.use((req, res, next) => {
       next()
 })
 /*******************
-      routes
+      routes 
 *******************/
 app.use('/', require('./routes/home'))
 app.use('/expense', require('./routes/record'))
