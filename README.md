@@ -18,16 +18,13 @@
    ```
 2. 移動至目錄expense-tracker
    ```
-   cd restaurant-list
+   cd expense-tracker
    ```
 3. 使用npm安裝相關套件
    ```
    npm install
    ```
 4. 開啟本地MongoDB資料庫，並啟動伺服器
-   ```
-   ~/restaurant-list/models/seeds node user2restaurant.js
-   ```
 5. 輸入指令建立user和record種子資料
    ```
    npm run seeder
