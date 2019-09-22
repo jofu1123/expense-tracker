@@ -13,6 +13,7 @@ router.get('/login', (req, res) => {
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
     successRedirect: '/',
+    failureFlash: req.flash('warning_msg', '帳號密碼輸入錯誤'),
     failureRedirect: '/users/login'
   })(req, res, next)
 })

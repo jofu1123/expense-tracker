@@ -3,9 +3,10 @@ const router = express.Router()
 const Record = require('../models/record')
 const total = require('../libs/total')
 const categoryToCh = require('../libs/categoryToCh')
+const { authenticated } = require('../config/auth')
 
-router.get('/', (req, res) => {
-  Record.find().exec((err, records) => {
+router.get('/', authenticated, (req, res) => {
+  Record.find({ userId: req.user._id }).exec((err, records) => {
     const keyword = req.query.keyword
     const newRecords = records.filter(({ category }) => {
       return category === keyword
