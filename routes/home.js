@@ -8,11 +8,11 @@ const { authenticated } = require('../config/auth')
 // 首頁
 router.get('/', authenticated, (req, res) => {
   Record.find({ userId: req.user._id }).exec((err, records) => {
-    let count = total(records)
+    let totalAmount = total(records)
     let categoryCh = categoryToCh()
 
     if (err) return console.error(err)
-    return res.render('index', { records, count, categoryCh })
+    return res.render('index', { records, totalAmount, categoryCh })
   })
 })
 

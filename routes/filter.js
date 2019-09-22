@@ -14,8 +14,8 @@ router.get('/', authenticated, (req, res) => {
     if (err) return console.error(err)
 
     const categoryCh = categoryToCh(req.query.keyword)
-    const count = total(newRecords)
-    return res.render('index', { records: newRecords, count, categoryCh })
+    const totalAmount = total(newRecords)
+    return res.render('index', { records: newRecords, totalAmount, categoryCh })
   })
 })
 
