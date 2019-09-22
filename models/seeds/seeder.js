@@ -27,6 +27,7 @@ db.once('open', () => {
 
         User.create(userList[i]).then(user => {
           for (let k = 0; k < recordList.length; k++) {
+            recordList[k].categoryCh = categoryToCh(recordList[k].category)
             recordList[k].userId = user._id
             Record.create(recordList[k])
           }
