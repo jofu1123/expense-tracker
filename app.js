@@ -33,7 +33,11 @@ app.use(flash())
 /*******************
     mongo connect
 *******************/
-mongoose.connect('mongodb://localhost/expense', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/expense', {
+      useNewUrlParser: true,
+      useCreateIndex: true,
+      useUnifiedTopology: true
+})
 
 const db = mongoose.connection
 db.on('error', () => {
@@ -75,6 +79,6 @@ app.use('/auth', require('./routes/auths'))
 /*******************
     start server
 *******************/
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
       console.log('start localhost:3000')
 })
