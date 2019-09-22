@@ -46,7 +46,7 @@ app.use(express.static('public'))
 *******************/
 app.use('/', require('./routes/home'))
 app.use('/expense', require('./routes/record'))
-
+app.use('/filter', require('./routes/filter'))
 
 /*******************
     start server
