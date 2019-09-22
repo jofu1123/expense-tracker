@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Record = require('../models/record')
-const categoryToCh = require('../libs/categoryToCH')
+const categoryToCh = require('../libs/categoryToCh')
 const { authenticated } = require('../config/auth')
 
 // 列出所有record
