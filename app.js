@@ -6,6 +6,7 @@ const bodyPaser = require('body-parser')
 const methodOverride = require('method-override')
 const mongoose = require('mongoose')
 const session = require('express-session')
+const passport = require('passport')
 
 //port
 const port = '3000'
@@ -38,16 +39,22 @@ db.once('open', () => {
       console.log('mongodb connected !')
 })
 
-
-
-
-
 /*******************
       static
 *******************/
 app.use(express.static('public'))
 
+/*******************
+    passport set
+*******************/
+app.use(passport.initialize())
+app.use(passport.session())
 
+require('./config/passport')(passport)
+app.use((req, res, next) => {
+      res.locals.user = req, user
+      next()
+})
 /*******************
       routes
 *******************/
